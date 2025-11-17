@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-describe('For Loop', () => {
+describe('Loop', () => {
     // for loop
     test('should support for loop', () => {
         const counter = [];
@@ -41,4 +41,50 @@ describe('For Loop', () => {
         }
         expect(counter).toEqual([0, 1, 2]);
     });
+
+       // while loop
+    test('should support while loop', () => {
+        const counter = [];
+        let i = 0;
+        while (i < 5) {
+            counter.push(i);
+            i++;
+        }
+        expect(counter).toEqual([0, 1, 2, 3, 4]);
+    });
+
+    // do..while loop
+    test('should support do..while loop', () => {
+        const counter = [];
+        let i = 0;
+        do {
+            counter.push(i);
+            i++;
+        } while (i < 5);
+
+        expect(counter).toEqual([0, 1, 2, 3, 4]);
+    });
+
+    test('should support break and continue', () => {
+        const result = [];
+        let i = 0;
+
+        do {
+            i++;
+
+            if (i === 10) {
+                break;
+            }
+
+            if (i % 2 === 0) {
+                continue;
+            }
+
+            console.log(i);
+            result.push(i);
+        } while (true);
+
+        expect(result).toEqual([1, 3, 5, 7, 9]);
+
+    })
 });
