@@ -15,4 +15,11 @@ describe('If Statement', () => {
             console.log('D');
         }
     })
+
+    // using ternary operator
+    test('should support ternary operator', () => {
+        const age = 20;
+        const canVote = age >= 18 ? 'Yes' : 'No';
+        expect(canVote).toBe('Yes');
+    })
 })
