@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { Seller } from "../src/interface";
+import type { Employee, Manager } from "../src/employee";
 
 describe("Interface", () => {
     test("should support interface", () => {
@@ -53,7 +54,59 @@ describe("Interface", () => {
         expect(myDictionary["city"]).toBe("New York");
     })
 
-    test("should suppor0t extending interfaces", () => {
-        
+    // defineing interface inheritance
+    test("should support extending interfaces", () => {
+        const employee : Employee = {
+            id: 1,
+            name: "Jane Doe",
+            division: "Sales"
+        }
+
+        expect(employee.name).toBe("Jane Doe");
+        expect(employee.division).toBe("Sales");
+
+        const manager: Manager = {
+            id: 2,
+            name: "John Smith",
+            division: "Marketing",
+            numberOfEmployees: 10
+        }
+
+        expect(manager.name).toBe("John Smith");
+        expect(manager.numberOfEmployees).toBe(10);
+    })
+
+    // intersection types using interfaces
+    test('should support intersection types', () => {
+        interface HasName {
+            name: string;
+        }
+
+        interface HasId {
+            id: number | string;
+        }
+
+        type Person = HasName & HasId;
+
+        const person: Person = {
+            id: 1,
+            name: "John Doe"
+        }
+
+        expect(person.id).toBe(1);
+        expect(person.name).toBe("John Doe");
+    })
+
+    test('should support type assertion with interfaces', () => {
+        const employee: any = {
+            id: 3,
+            name: "Alice Johnson",
+            division: "HR"
+        }
+
+        const emp: Employee = employee as Employee;
+
+        expect(emp.name).toBe("Alice Johnson");
+        expect(emp.division).toBe("HR");
     })
 })
